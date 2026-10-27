@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Estudio de inglés · Intermediate I-2</title>
+<style>
+:root{--bg:#f7f6f2;--card:#fff;--tx:#1f2430;--mut:#6b7280;--ac:#2f5bea;--ok:#1a8f4c;--bad:#c93636;--bd:#e3e1da;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171c;--card:#1e222a;--tx:#eceef3;--mut:#9aa3b2;--ac:#7c9bff;--ok:#4cc57f;--bad:#ff7b7b;--bd:#2f3541}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,Segoe UI,Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:4px 0 2px}p.sub{color:var(--mut);margin:0 0 14px}
+nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px}
+nav button,.btn{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:9px 14px;border-radius:10px;font:inherit;cursor:pointer;white-space:nowrap}
+nav button.on,.btn.p{background:var(--ac);color:#fff;border-color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;margin:12px 0}
+.fc{min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;font-size:26px;font-weight:600}
+.fc small{font-size:14px;color:var(--mut);font-weight:400;margin-top:8px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:11px 14px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,var(--card))}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.mut{color:var(--mut);font-size:14px}.exp{margin-top:10px;padding:10px;border-left:3px solid var(--ac);background:color-mix(in srgb,var(--ac) 8%,var(--card));border-radius:6px;font-size:15px}
+input[type=text]{width:100%;padding:10px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:inherit}
+table{border-collapse:collapse;width:100%;font-size:15px}td,th{border:1px solid var(--bd);padding:7px 9px;text-align:left}th{background:color-mix(in srgb,var(--ac) 10%,var(--card))}
+.tbl{overflow-x:auto}code{background:color-mix(in srgb,var(--ac) 12%,var(--card));padding:1px 6px;border-radius:5px}
+</style></head><body><main>
+<h1>📘 Quiz 2 · Intermediate I</h1><p class="sub">Máximo Nivel · vocabulario, tiempos perfectos, participios y voz pasiva</p>
+<nav id="nav"></nav><div id="v"></div></main>
+<script>
+const V=[["charming","encantador"],["dust","polvo"],["to enjoy","disfrutar"],["site","sitio / lugar"],["toddler","niño pequeño (1-3 años)"],["to mean","significar"],["scene","escena"],["ivory","marfil"],["to collapse","colapsar"],["to prosper","prosperar"],["harmful","dañino"],["to raise","levantar / criar"],["twin","gemelo"],["to invade","invadir"],["to giggle","reírse tontamente"],["goods","bienes / mercancía"],["to shrink","encogerse"],["dense","denso / compacto"],["knowledge","conocimiento"],["disappointed","decepcionado"],["patent","patente"],["to ensure","asegurar"],["to glow","brillar"],["log","registro / tronco"],["gravestones","lápidas"],["to take care of","cuidar"],["vaccine","vacuna"],["blockbuster","éxito de taquilla"],["mourning","luto"],["burial","entierro"],["requiem","música para un funeral"],["inscription","inscripción"],["chapel","capilla"],["awe","asombro"],["ill","enfermo"],["to creep up","acercarse sigilosamente"],["feverishly","febrilmente"],["amusing","divertido"],["amusement","diversión"],["amazement","asombro"],["steps","escalones"],["waterfall","cascada"],["recorder","flauta dulce"],["to sign up","inscribirse"],["to boast / brag","presumir"],["to toddle","andar con pasos torpes"],["folks","gente / familia"],["stool","taburete"],["to smear","embadurnar"],["to splatter","salpicar"],["field","campo"],["athletic","atlético"]];
+const P=[["write","written"],["travel","traveled"],["drive","driven"],["take","taken"],["be","been"],["eat","eaten"],["drink","drunk"],["meet","met"],["go","gone"],["see","seen"],["do","done"],["give","given"],["break","broken"],["speak","spoken"],["know","known"],["have","had"],["make","made"],["buy","bought"]];
+const T=[
+["I’ve never met a celebrity in person.",["Present perfect","Past perfect","Future perfect","Present perfect progressive"],0,"have/has + past participle."],
+["He had had that job for 6 years before he was fired.",["Present perfect","Past perfect","Past perfect progressive","Future perfect"],1,"had + past participle, antes de otra acción pasada."],
+["I’ll have graduated before I start the job.",["Future perfect","Future perfect progressive","Present perfect","Past perfect"],0,"will have + past participle."],
+["She’s been living in Ecuador since 2017.",["Present perfect","Present perfect progressive","Past perfect progressive","Future perfect progressive"],1,"have/has been + verb-ing (acción que continúa)."],
+["Where had you been living before you moved here?",["Past perfect","Present perfect progressive","Past perfect progressive","Future perfect"],2,"had been + verb-ing."],
+["I will have been traveling for 3 hours before I arrive.",["Future perfect","Future perfect progressive","Present perfect progressive","Past perfect"],1,"will have been + verb-ing."],
+["I ___ in a meeting before I came to class.",["have been","had been","will have been","has been"],1,"Past perfect + past simple (came)."],
+["I will have drunk coffee ___ you eat.",["by the time","since","ago","yesterday"],0,"Future perfect se usa con by the time / before."],
+["She ___ dating my brother (still now).",["has been","had been","will have been","have been"],0,"She → has been + verb-ing."],
+["I ___ drinking coffee before I sat on the chair.",["have been","had been","will have been","am"],1,"Past perfect progressive: had been + -ing."],
+["I ___ worked in my home.",["have","had been","will have been","is"],0,"Present perfect: have + past participle."],
+["I ___ studying English since 2026.",["have been","had","will have","has been"],0,"I → have been + -ing; since + punto en el tiempo."]];
+const PV=[
+["Susana makes breakfast every morning.",["Breakfast is made by Susana every morning.","Breakfast was made by Susana every morning.","Breakfast makes by Susana every morning.","Breakfast is make by Susana."],0,"Present simple → am/is/are + past participle."],
+["The nun gave the children rosaries.",["The children were given rosaries by the nun.","The children was given rosaries by the nun.","The children gave rosaries by the nun.","The children are give rosaries by the nun."],0,"Past simple → was/were + past participle. Children = plural → were."],
+["The hurricane broke the table.",["The table was broken by the hurricane.","The table is broken by the hurricane.","The table broke by the hurricane.","The table was break by the hurricane."],0,"Past simple: was + broken (participio de break)."],
+["You should invite Luisa to the party.",["Luisa should be invited to the party.","Luisa should invited to the party.","Luisa should be invite to the party.","Luisa is should invited."],0,"Modal + be + past participle. Se puede omitir “by you”."],
+["We will play chess on Thursday.",["Chess will be played by us on Thursday.","Chess will played by us on Thursday.","Chess is played by us on Thursday.","Chess will be play by us."],0,"will + be + past participle."],
+["He plays soccer.",["Soccer is played by him.","Soccer was played by him.","Soccer is playing by him.","Soccer plays by him."],0,"Objeto → sujeto; is + played; by + him."],
+["I drank coffee yesterday.",["Coffee was drunk by me yesterday.","Coffee is drunk by me yesterday.","Coffee was drank by me yesterday.","Coffee drunk by me."],0,"drink → drank → drunk."],
+["She is studying English.",["English is being studied by her.","English is studied by her.","English was being studied by her.","English is study by her."],0,"Presente continuo → is/are + being + past participle."],
+["Which sentence CANNOT become passive?",["Tom is an engineer.","Tom plays soccer.","Tom broke the table.","Tom will invite Luisa."],0,"Sin objeto directo no hay voz pasiva (“to be” no tiene objeto)."]];
+const M=[["toddler","C. a young child, between one and three"],["dense","E. closely compacted"],["to prosper","A. to be successful"],["charming","D. pleasant or attractive"],["to mean","B. to signify, to convey"]];
+const WR=[["Present perfect","I have studied in my school."],["Past perfect","I had studied before I came to the quiz."],["Future perfect","I will have studied before I take the quiz."],["Present perfect progressive","I have been studying at Máximo Nivel since 2026."],["Past perfect progressive","I had been studying before I went to my quiz."],["Future perfect progressive","I will have been studying for two hours before my quiz."]];
+const tabs=[["Resumen","sum"],["Vocabulario","fc"],["Test vocab.","vq"],["Participios","pp"],["Tiempos","tn"],["Voz pasiva","pv"],["Diálogo","dl"]];
+const $=s=>document.querySelector(s),sh=a=>[...a].sort(()=>Math.random()-.5);
+let cur="sum";
+function nav(){ $("#nav").innerHTML=tabs.map(t=>`<button class="${cur==t[1]?'on':''}" onclick="go('${t[1]}')">${t[0]}</button>`).join("")}
+function go(t){cur=t;nav();R[t]()}
+// flashcards
+let fi=0,fd=[],flip=false,known=0,dir=0;
+function fcStart(){fd=sh(V);fi=0;known=0;flip=false;fcShow()}
+function fcShow(){ if(fi>=fd.length){$("#v").innerHTML=`<div class="card"><h2>¡Listo!</h2><p>Sabías ${known} de ${fd.length}.</p><button class="btn p" onclick="fcStart()">Repetir</button></div>`;return}
+ const c=fd[fi],f=dir?c[1]:c[0],b=dir?c[0]:c[1];
+ $("#v").innerHTML=`<div class="row mut"><span>${fi+1} / ${fd.length}</span><button class="btn" onclick="dir=1-dir;fcShow()">${dir?'ES → EN':'EN → ES'}</button></div><div class="card fc" onclick="flip=!flip;fcShow()">${flip?b:f}<small>${flip?'Toca para volver':'Toca para ver la respuesta'}</small></div><div class="row"><button class="btn" onclick="fi++;flip=false;fcShow()">❌ Repasar</button><button class="btn p" onclick="known++;fi++;flip=false;fcShow()">✅ Lo sé</button></div>`}
+// generic quiz
+function quiz(items,title,gen){let q=sh(items),i=0,s=0;const draw=()=>{if(i>=q.length){$("#v").innerHTML=`<div class="card"><h2>${title}: ${s}/${q.length}</h2><p>${s/q.length>.8?'¡Excelente! 🎉':'Sigue practicando, vas bien 💪'}</p><button class="btn p" onclick="go(cur)">Reintentar</button></div>`;return}
+ const [t,o,a,e]=gen(q[i]);const idx=sh(o.map((_,k)=>k));
+ $("#v").innerHTML=`<div class="mut">${title} · ${i+1}/${q.length} · aciertos ${s}</div><div class="card"><b>${t}</b><div id="o">${idx.map(k=>`<button class="opt" data-k="${k}">${o[k]}</button>`).join("")}</div><div id="e"></div></div>`;
+ document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const k=+b.dataset.k;document.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(+x.dataset.k==a)x.classList.add("ok")});if(k==a)s++;else b.classList.add("bad");$("#e").innerHTML=(e?`<div class="exp">${e}</div>`:"")+`<p><button class="btn p" id="nx">Siguiente</button></p>`;$("#nx").onclick=()=>{i++;draw()}})};draw()}
+// participles typed
+function pp(){let q=sh(P),i=0,s=0;const draw=()=>{if(i>=q.length){$("#v").innerHTML=`<div class="card"><h2>Participios: ${s}/${q.length}</h2><button class="btn p" onclick="go('pp')">Reintentar</button></div>`;return}
+ $("#v").innerHTML=`<div class="mut">${i+1}/${q.length} · aciertos ${s}</div><div class="card"><b>Past participle de: <code>${q[i][0]}</code></b><p><input type="text" id="in" autocomplete="off" autocapitalize="off"></p><div id="e"></div><button class="btn p" id="ck">Comprobar</button></div>`;
+ const ck=()=>{const ok=$("#in").value.trim().toLowerCase().replace("travelled","traveled")==q[i][1];if(ok)s++;$("#e").innerHTML=`<div class="exp">${ok?'✅ Correcto':'❌ Respuesta: <b>'+q[i][1]+'</b>'}</div>`;$("#ck").textContent="Siguiente";$("#ck").onclick=()=>{i++;draw()}};$("#ck").onclick=ck;$("#in").onkeydown=e=>{if(e.key=="Enter")$("#ck").click()};$("#in").focus()};draw()}
+const R={
+sum(){$("#v").innerHTML=`<div class="card"><b>Fórmulas clave</b><div class="tbl"><table><tr><th>Tiempo</th><th>Estructura</th><th>Ejemplo</th></tr>
+<tr><td>Present perfect</td><td>have/has + participio</td><td>I have worked in my home.</td></tr>
+<tr><td>Present perfect prog.</td><td>have/has been + -ing</td><td>She has been dating my brother.</td></tr>
+<tr><td>Past perfect</td><td>had + participio</td><td>I had been in a meeting before I came to class.</td></tr>
+<tr><td>Past perfect prog.</td><td>had been + -ing</td><td>I had been drinking coffee before I sat down.</td></tr>
+<tr><td>Future perfect</td><td>will have + participio</td><td>I will have drunk before you eat.</td></tr>
+<tr><td>Future perfect prog.</td><td>will have been + -ing</td><td>I will have been traveling for 3 hours.</td></tr></table></div></div>
+<div class="card"><b>Voz pasiva</b><p><code>be + past participle</code> · el objeto pasa a ser sujeto, el sujeto va con <code>by</code>.</p><p>Con modales: <code>S + modal + be + past participle</code> (Louisa should be invited).</p><p>Sin objeto no hay pasiva: <i>Tom is an engineer.</i></p></div>
+<div class="card"><b>Emparejar (Parte 1B)</b>${M.map(m=>`<p class="mut">${m[0]} → ${m[1]}</p>`).join("")}<b>Escribir (Parte 2B)</b>${WR.map(m=>`<p class="mut">${m[0]}: ${m[1]}</p>`).join("")}</div>`},
+fc(){fcStart()},
+vq(){quiz(V,"Vocabulario",c=>{const w=sh(V.filter(x=>x!=c)).slice(0,3).map(x=>x[1]);return["¿Qué significa “"+c[0]+"”?",[c[1],...w],0,""]})},
+pp(){pp()},
+tn(){quiz(T,"Tiempos verbales",c=>["Elige: "+c[0],c[1],c[2],c[3]])},
+pv(){quiz(PV,"Voz pasiva",c=>["Pasa a voz pasiva: “"+c[0]+"”",c[1],c[2],c[3]])},
+dl(){$("#v").innerHTML=`<div class="card"><b>Parte 4: diálogo (dar y pedir razones)</b><p class="mut">Tema: tú quieres quedarte en el pueblo, tu familia quiere mudarse a una ciudad grande.</p>
+<p><b>Mom:</b> Why do you want to stay in the small town?<br><b>You:</b> Because I have lived here all my life, and I feel safe. In addition, my friends are here.<br><b>Dad:</b> But a large city has more opportunities. Don’t you want a better job someday?<br><b>You:</b> Yes, but what is the reason you want to move now?<br><b>Dad:</b> The schools are better, and there are more activities for you.<br><b>You:</b> I understand, however, the city is noisy and expensive. Could we visit first?<br><b>Mom:</b> That’s a good idea. Let’s talk about it again.</p></div>
+<div class="card"><b>Frases útiles</b><p class="mut"><b>Dar razones:</b> Because… · The reason is that… · In addition… · For example… · That’s why…<br><b>Pedir razones:</b> Why do you think…? · What’s the reason for…? · Can you explain why…?<br><b>Estar en desacuerdo:</b> I see your point, but… · I understand, however… · On the other hand…</p></div>
+<div class="card"><b>Listening (Parte 5)</b><p class="mut">Escucha ideas generales primero, luego detalles (fechas, nombres, razones). Repasa el vocabulario de las lecturas: war, burial, mourning, chapel, toddler.</p></div>`}};
+go("sum");
+</script></body></html>
